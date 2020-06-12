@@ -8,9 +8,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Homepage</title>
+    <title>Index</title>
 </head>
 <body>
     <h1>spring-rest</h1>
+    <ul>
+        <li><a href="${pageContext.request.contextPath}/api/customers">/api/customers</a></li>
+    </ul>
 </body>
 </html>
