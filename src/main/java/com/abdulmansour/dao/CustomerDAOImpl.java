@@ -37,7 +37,8 @@ public class CustomerDAOImpl implements CustomerDAO {
     }
 
     public void saveCustomer(Customer customer) {
-
+        Session currentSession = sessionFactory.getCurrentSession();
+        currentSession.saveOrUpdate(customer);
     }
 
     public void deleteCustomer(int id) {
