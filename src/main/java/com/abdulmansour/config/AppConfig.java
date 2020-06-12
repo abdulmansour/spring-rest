@@ -35,6 +35,7 @@ public class AppConfig implements WebMvcConfigurer {
     //set up logger for diagnostics
     private Logger logger = Logger.getLogger(getClass().getName());
 
+    //used to specify path characteristics
     @Bean
     public ViewResolver viewResolver() {
         InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
@@ -43,6 +44,7 @@ public class AppConfig implements WebMvcConfigurer {
         return viewResolver;
     }
 
+    // db data source connection parameters; fetch/save/update
     @Bean
     public DataSource dataSource() {
 
@@ -79,10 +81,11 @@ public class AppConfig implements WebMvcConfigurer {
         return properties;
     }
 
+    // initializing db parameter for session provider/factory
     @Bean
     public LocalSessionFactoryBean sessionFactory(){
 
-        // create session factorys
+        // create session factories
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
 
         // set the properties
@@ -93,11 +96,10 @@ public class AppConfig implements WebMvcConfigurer {
         return sessionFactory;
     }
 
+    // setup transaction manager based on session factory
     @Bean
     @Autowired
     public HibernateTransactionManager transactionManager(SessionFactory sessionFactory) {
-
-        // setup transaction manager based on session factory
         HibernateTransactionManager txManager = new HibernateTransactionManager();
         txManager.setSessionFactory(sessionFactory);
 
